@@ -14,6 +14,7 @@ public class HomeController {
     private final JmsTemplate jmsTemplate;
     @PostMapping()
     public void sendMessage(@RequestBody String message) {
-        jmsTemplate.send(session -> session.createObjectMessage(message));
+//        jmsTemplate.send(session -> session.createObjectMessage(message));
+        jmsTemplate.convertAndSend(message);    // automatically convert an Obj to Message and send it
     }
 }
